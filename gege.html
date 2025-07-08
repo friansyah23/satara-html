@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda - Shopee Tenun</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #fff8dc;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .produk-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .produk {
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: #fffaf0;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .produk img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .btn-custom {
+      background-color: #ffbf00;
+      color: white;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center my-4">Selamat Datang Satara</h2>
+    <p class="text-center">Kain tenun Sambas adalah salah satu kekayaan budaya Indonesia yang berasal dari Kabupaten Sambas.</p>
+
+    <h4>Produk Unggulan</h4>
+    <div class="produk-container">
+      <div class="produk">
+        <h5>Tanjak 1 </h5>
+        <img src="tanjak.jpg" alt="Tanjak 1">
+        <p>Rp 85.000</p>
+        <button class="btn btn-custom w-100" onclick="tambahKeranjang('modern clasic', 125000)">Tambah ke Keranjang</button>
+      </div>
+      <div class="produk">
+        <h5>Tanjak 2</h5>
+        <img src="tanjak 2.jpeg" alt="Tanjak 2">
+        <p>Rp 125.000</p>
+        <button class="btn btn-custom w-100" onclick="tambahKeranjang('Ajutan Bingas', 125000)">Tambah ke Keranjang</button>
+      </div>
+      <div class="produk">
+        <h5>Tanjak 3</h5>
+        <img src="tanjak 3.jpeg" alt="Tanjak 3">
+        <p>Rp 100.000</p>
+        <button class="btn btn-custom w-100" onclick="tambahKeranjang('Bahtera silver', 100000)">Tambah ke Keranjang</button>
+      </div>
+      <div class="produk">
+        <h5>Tanjak 4</h5>
+        <img src="tanjak 4.jpeg" alt="Tanjak 4">
+        <p>Rp 100.000</p>
+        <button class="btn btn-custom w-100" onclick="tambahKeranjang('Lang Melayang maroon', 100000)">Tambah ke Keranjang</button>
+      </div>
+      <div class="produk">
+        <h5>Tanjak 5</h5>
+        <img src="tanjak 5.jpeg" alt="Tanjak 5">
+        <p>Rp 100.000</p>
+        <button class="btn btn-custom w-100" onclick="tambahKeranjang('solok Derhaka', 100000)">Tambah ke Keranjang</button>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="file:///C:/hari.html/keranjangg.html" class="btn btn-warning">Lihat Keranjang</a>
+    </div>
+  </div>
+
+  <script>
+    function tambahKeranjang(nama, harga) {
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      let item = keranjang.find(i => i.nama === nama);
+      if (item) item.jumlah += 1;
+      else keranjang.push({ nama, harga, jumlah: 1 });
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+      alert(nama + ' ditambahkan ke keranjang.');
+    }
+  </script>
+</body>
+</html>

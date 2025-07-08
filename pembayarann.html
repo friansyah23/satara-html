@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran - Shopee Tenun</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #fff8dc;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .payment-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h3>Form Pembayaran</h3>
+    <form onsubmit="return prosesPembayaran()">
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama Lengkap</label>
+        <input type="text" id="nama" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label for="metode" class="form-label">Metode Pembayaran</label>
+        <select id="metode" class="form-select" required>
+          <option value="">-- Pilih --</option>
+          <option value="Transfer Bank">Transfer Bank</option>
+          <option value="E-Wallet">E-Wallet (OVO, Dana, Gopay)</option>
+          <option value="COD">Bayar di Tempat (COD)</option>
+          <option value="Kartu Kredit">Kartu Kredit</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Proses Pembayaran</button>
+    </form>
+  </div>
+
+  <script>
+    function prosesPembayaran() {
+      const nama = document.getElementById('nama').value;
+      const metode = document.getElementById('metode').value;
+      if (!nama || !metode) {
+        alert("Mohon lengkapi data pembayaran.");
+        return false;
+      }
+      alert(`Terima kasih, ${nama}! Pembayaran dengan metode ${metode} sedang diproses.`);
+      localStorage.removeItem('keranjang');
+      return false;
+    }
+  </script>
+</body>
+</html>
